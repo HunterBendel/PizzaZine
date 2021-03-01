@@ -2,4 +2,5 @@
 PizzaZine Project
 
 Name: Hunter Bendel
+
 Email: bendelh@csu.fullerton.edu
