@@ -5,8 +5,8 @@
 #include <string>
 #include <vector>
 
-
-using namespace std;
+using std::string;
+using std::vector;
 
 // This struct is complete
 struct Location {
@@ -24,10 +24,12 @@ struct Location {
 // This class needs to be completed / implemented
 class PizzaZine {
 private:
-        
+    vector <Location> locations;
 
 public:
-    
+    PizzaZine() = default;
+
+    size_t size() const;
     // This function is implemented for you
     void readInFile(const string&, size_t);
 
@@ -43,7 +45,7 @@ public:
 // This function is implemented for you
 
 void PizzaZine::readInFile(const string& filename,size_t c) {
-    ifstream inFile(filename);
+    std::ifstream inFile(filename);
     Location newLoc;
 
     string line;
@@ -53,7 +55,7 @@ void PizzaZine::readInFile(const string& filename,size_t c) {
     for (size_t i = 0; i < c; ++i) {
         // Break each line up into 'cells'
         getline(inFile, line);
-        stringstream lineStream(line);
+        std::stringstream lineStream(line);
         while(getline(lineStream, newLoc.name, ',')) {
             getline(lineStream, newLoc.address, ',');
             getline(lineStream, newLoc.city, ',');
@@ -85,3 +87,27 @@ void PizzaZine::readInFile(const string& filename,size_t c) {
 }
 
 // Write remaining functions implementation here
+
+size_t PizzaZine::size() const {
+    return locations.size();
+}
+
+Location& PizzaZine::get(size_t index) {
+    return locations.at(index);
+}
+
+Location& PizzaZine::operator[](size_t index) {
+    return locations.at(index);
+}
+
+void PizzaZine::add(Location new_location) {
+    locations.push_back(new_location);
+}
+
+Location& PizzaZine::first() {
+    return locations.at(0);
+}
+
+Location& PizzaZine::last() {
+    return locations.at(locations.size() - 1);
+}
