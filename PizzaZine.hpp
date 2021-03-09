@@ -8,7 +8,7 @@
 using std::string;
 using std::vector;
 
-// This struct is complete
+// This struct defines all of the data that will be pulled from each line of the csv file
 struct Location {
     string name;
     string address;
@@ -21,28 +21,31 @@ struct Location {
     int priceRangeMax;
 };
 
-// This class needs to be completed / implemented
+// This class holds the vector as well as some member functions
 class PizzaZine {
 private:
+    // This vector stores the data read in from the csv file
     vector <Location> locations;
 
 public:
+    // Class constructor
     PizzaZine() = default;
-
+    // Sets up a size function to draw out the total size of the vector
     size_t size() const;
-    // This function is implemented for you
+    // This function reads in the csv file to the class
     void readInFile(const string&, size_t);
-
-    // The following functions need to be implemented
+    // This function returns data from a certain index in the vector
     Location& operator[](size_t);
+    // This function adds new data at a new index in the vector.
     void add(Location new_location);
+    // This function also returns data from a certain index in the vector
     Location& get(size_t);
+    // This function returns data from the first index in the vector
     Location& first();
+    // This function returns data from the last index in the vector
     Location& last();
 
 };
-
-// This function is implemented for you
 
 void PizzaZine::readInFile(const string& filename,size_t c) {
     std::ifstream inFile(filename);
@@ -85,8 +88,6 @@ void PizzaZine::readInFile(const string& filename,size_t c) {
         }
     }
 }
-
-// Write remaining functions implementation here
 
 size_t PizzaZine::size() const {
     return locations.size();
