@@ -11,6 +11,7 @@ static const int testTotal = 18;
 template <typename T>
 bool assertTrue(const string&, const T&, const T&);
 
+// This function runs a series of tests that check if the struct, class, and class members were declared and implemented correctly
 int main(int argc, char const *argv[]) {
     PizzaZine top10;
     top10.readInFile("data.csv",10);
